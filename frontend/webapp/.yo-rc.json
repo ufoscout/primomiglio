@@ -1,12 +1,16 @@
 {
   "generator-gulp-angular": {
-    "version": "0.12.1",
+    "version": "1.0.0",
     "props": {
-      "angularVersion": "~1.4.0",
+      "angularVersion": "~1.4.2",
       "angularModules": [
         {
           "key": "animate",
           "module": "ngAnimate"
+        },
+        {
+          "key": "cookies",
+          "module": "ngCookies"
         },
         {
           "key": "touch",
@@ -15,18 +19,26 @@
         {
           "key": "sanitize",
           "module": "ngSanitize"
+        },
+        {
+          "key": "messages",
+          "module": "ngMessages"
+        },
+        {
+          "key": "aria",
+          "module": "ngAria"
         }
       ],
       "jQuery": {
-        "key": "none"
+        "key": "jqLite"
       },
       "resource": {
-        "key": "none",
-        "module": null
+        "key": "angular-resource",
+        "module": "ngResource"
       },
       "router": {
-        "key": "angular-route",
-        "module": "ngRoute"
+        "key": "ui-router",
+        "module": "ui.router"
       },
       "ui": {
         "key": "bootstrap",
@@ -37,16 +49,16 @@
         "module": "ui.bootstrap"
       },
       "cssPreprocessor": {
-        "key": "none",
-        "extension": "css"
+        "key": "node-sass",
+        "extension": "scss"
       },
       "jsPreprocessor": {
-        "key": "none",
-        "extension": "js",
-        "srcExtension": "js"
+        "key": "typescript",
+        "extension": "ts",
+        "srcExtension": "ts"
       },
       "htmlPreprocessor": {
-        "key": "none",
+        "key": "noHtmlPrepro",
         "extension": "html"
       },
       "foundationComponents": {
