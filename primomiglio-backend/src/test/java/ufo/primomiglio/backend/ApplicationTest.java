@@ -1,15 +1,14 @@
 package ufo.primomiglio.backend;
 
+import static org.junit.Assert.*;
+
 import org.junit.Test;
-import org.junit.runner.RunWith;
 
-import io.vertx.ext.unit.junit.VertxUnitRunner;
-
-@RunWith(VertxUnitRunner.class)
-public class ApplicationTest {
+public class ApplicationTest extends BaseAbstractTest {
 
 	@Test
 	public void contextShouldLoad() {
+	    assertNotNull(getContext());
 	}
 
 }

@@ -1,7 +1,8 @@
 package ufo.primomiglio.backend;
 
-import io.vertx.core.Vertx;
-import ufo.primomiglio.backend.web.WebServerVerticle;
+import ufo.primomiglio.backend.config.ApplicationConfig;
+import ufo.primomiglio.backend.config.WebConfig;
+import ufo.primomiglio.common.config.Context;
 
 /**
  * Created by ufo on 11/13/15.
@@ -9,6 +10,14 @@ import ufo.primomiglio.backend.web.WebServerVerticle;
 public class Application {
 
     public static void main(String[] args) {
-        Vertx.vertx().deployVerticle(WebServerVerticle.class.getName());
+        startApplication(args);
     }
+
+    public static Context startApplication(String... args) {
+        Context context = Context.newContext();
+        ApplicationConfig.configureApplication(context);
+        WebConfig.configureWeb(context);
+        return context;
+    }
+
 }
