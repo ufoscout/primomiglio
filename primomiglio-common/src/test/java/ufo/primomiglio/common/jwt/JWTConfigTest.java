@@ -13,14 +13,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package ufo.primomiglio.common.config;
+package ufo.primomiglio.common.jwt;
 
-import ufo.primomiglio.common.context.Context;
+import static org.junit.Assert.*;
 
-public interface CommonConfiguration {
+import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
-    static void configureCommon(Context context) {
-        context.addToContext(VertxConfiguration::configureVertx);
+import ufo.primomiglio.common.BaseAbstractTest;
+
+public class JWTConfigTest extends BaseAbstractTest {
+
+    @Autowired
+    private JWTConfig config;
+
+    @Test
+    public void config_should_not_be_null() {
+        assertNotNull(config);
+    }
+
+    @Test
+    public void secret_should_not_be_null() {
+        assertNotNull(config.getSecret());
     }
 
 }

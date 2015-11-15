@@ -19,6 +19,8 @@
 //formatter:on
 package ufo.primomiglio.common.json;
 
+import org.springframework.stereotype.Component;
+
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -36,12 +38,13 @@ import com.fasterxml.jackson.databind.jsonschema.JsonSchema;
  * @author ARHS Developments - cinafr
  * @version $Revision
  */
+@Component
 public class JacksonJsonSerializerService implements JsonSerializerService {
 
 	private final ObjectMapper mapper;
 
 	public JacksonJsonSerializerService() {
-		this(true, true);
+		this(false, false);
 	}
 
 	public JacksonJsonSerializerService(final boolean failOnUnknownProperties) {

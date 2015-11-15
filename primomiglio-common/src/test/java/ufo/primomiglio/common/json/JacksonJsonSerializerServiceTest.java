@@ -25,13 +25,16 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+import javax.annotation.Resource;
+
 import org.junit.Test;
 
 import ufo.primomiglio.common.BaseAbstractTest;
 
 public class JacksonJsonSerializerServiceTest extends BaseAbstractTest {
 
-    private JsonSerializerService jsonSerializerService = new JacksonJsonSerializerService();
+    @Resource
+    private JsonSerializerService jsonSerializerService;
 
     @Test
     public void testJson() {

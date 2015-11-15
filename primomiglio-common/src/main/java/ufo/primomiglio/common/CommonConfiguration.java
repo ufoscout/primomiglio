@@ -13,19 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package ufo.primomiglio.common.config;
+package ufo.primomiglio.common;
 
-import org.springframework.context.annotation.Bean;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
-import io.vertx.core.Vertx;
-
 @Configuration
-public class VertxConfiguration {
-
-    @Bean
-    public Vertx vertx() {
-        return Vertx.vertx();
-    }
+@ComponentScan
+@EnableConfigurationProperties
+public class CommonConfiguration {
 
 }

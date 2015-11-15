@@ -13,20 +13,39 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package ufo.primomiglio.backend.config;
+package ufo.primomiglio.backend.usermanagement.provider;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.util.List;
 
-import ufo.primomiglio.common.context.Context;
+public class UserContext {
 
-public class ApplicationConfig {
+    private String username;
+    private List<String> permissions;
 
-    private static Logger LOGGER = LoggerFactory.getLogger(ApplicationConfig.class);
+    /**
+     * @return the permissions
+     */
+    public List<String> getPermissions() {
+        return permissions;
+    }
+    /**
+     * @param permissions the permissions to set
+     */
+    public void setPermissions(List<String> permissions) {
+        this.permissions = permissions;
+    }
 
-    public static void configureApplication(Context context) {
-        LOGGER.info("Configure Backend application");
-
+    /**
+     * @return the username
+     */
+    public String getUsername() {
+        return username;
+    }
+    /**
+     * @param username the username to set
+     */
+    public void setUsername(String username) {
+        this.username = username;
     }
 
 }

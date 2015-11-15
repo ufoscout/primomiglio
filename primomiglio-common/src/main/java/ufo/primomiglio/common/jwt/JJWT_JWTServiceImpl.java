@@ -19,10 +19,14 @@ import java.security.Key;
 
 import javax.crypto.spec.SecretKeySpec;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import ufo.primomiglio.common.json.JsonSerializerService;
 
+@Component
 public class JJWT_JWTServiceImpl implements JWTService {
 
     private static final SignatureAlgorithm SIGNATURE_ALGORITHM = SignatureAlgorithm.HS512;
@@ -30,9 +34,10 @@ public class JJWT_JWTServiceImpl implements JWTService {
     private final Key key;
     private final JsonSerializerService jsonSerializerService;
 
-    public JJWT_JWTServiceImpl(byte[] secret, JsonSerializerService jsonSerializerService) {
+    @Autowired
+    public JJWT_JWTServiceImpl(JWTConfig config, JsonSerializerService jsonSerializerService) {
         this.jsonSerializerService = jsonSerializerService;
-        key = new SecretKeySpec(secret, ALGORITHM);
+        key = new SecretKeySpec(config.getSecret().getBytes(), ALGORITHM);
     }
 
     @Override

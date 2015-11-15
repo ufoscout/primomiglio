@@ -24,8 +24,8 @@ import org.junit.rules.TestName;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import io.vertx.ext.unit.junit.VertxUnitRunner;
+import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
  *
@@ -33,7 +33,8 @@ import io.vertx.ext.unit.junit.VertxUnitRunner;
  *
  *         20/mag/2011
  */
-@RunWith(VertxUnitRunner.class)
+@RunWith(SpringJUnit4ClassRunner.class)
+@SpringApplicationConfiguration(classes = CommonConfiguration.class)
 public abstract class BaseAbstractTest {
 
     static {

@@ -13,31 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package ufo.primomiglio.backend.config;
+package ufo.primomiglio.backend.usermanagement;
 
-import co.paralleluniverse.fibers.Suspendable;
-import io.vertx.core.DeploymentOptions;
-import io.vertx.core.Vertx;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import ufo.primomiglio.backend.web.WebServerVerticle;
+
+import co.paralleluniverse.fibers.Suspendable;
 import ufo.primomiglio.common.context.Context;
-import ufo.primomiglio.common.util.RuntimeUtils;
 
-public class WebConfig {
+public class UserManagementConfig {
 
-    private static Logger LOGGER = LoggerFactory.getLogger(ApplicationConfig.class);
+    private static Logger LOGGER = LoggerFactory.getLogger(UserManagementConfig.class);
 
     @Suspendable
-    public static void configureWeb(Context context) {
-        LOGGER.info("Configure Backend Web application");
-
-        Vertx vertx = context.getComponent(Vertx.class);
-
-        int instances = RuntimeUtils.numberOfCores() / 4;
-
-        vertx.deployVerticle(WebServerVerticle.class.getName(), new DeploymentOptions().setInstances(instances));
+    public static void configure(Context context) {
+        LOGGER.info("Configure UserManagement");
 
     }
-
 }

@@ -32,29 +32,16 @@
 		<finalName>${project.groupId}.${project.artifactId}</finalName>
 		<plugins>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-shade-plugin</artifactId>
-				<executions>
-					<execution>
-						<phase>package</phase>
-						<goals>
-							<goal>shade</goal>
-						</goals>
-						<configuration>
-							<transformers>
-								<transformer
-									implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-									<manifestEntries>
-										<Main-Class>${exec.mainClass}</Main-Class>
-									</manifestEntries>
-								</transformer>
-							</transformers>
-							<artifactSet>
-							</artifactSet>
-							<outputFile>${project.build.directory}/${project.build.finalName}-fat.jar</outputFile>
-						</configuration>
-					</execution>
-				</executions>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<requiresUnpack>
+						<dependency>
+							<groupId>ufo.primomiglio</groupId>
+							<artifactId>primomiglio-frontend</artifactId>
+						</dependency>
+					</requiresUnpack>
+				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>com.spotify</groupId>
@@ -67,7 +54,7 @@
 						<resource>
 							<targetPath>/</targetPath>
 							<directory>${project.build.directory}</directory>
-							<include>${project.build.finalName}-fat.jar</include>
+							<include>${project.build.finalName}.jar</include>
 						</resource>
 					</resources>
 				</configuration>

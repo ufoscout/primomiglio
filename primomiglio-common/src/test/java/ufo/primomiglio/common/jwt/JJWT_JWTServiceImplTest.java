@@ -15,20 +15,23 @@
  ******************************************************************************/
 package ufo.primomiglio.common.jwt;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 
 import java.util.Date;
 import java.util.UUID;
 
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import io.jsonwebtoken.SignatureException;
 import ufo.primomiglio.common.BaseAbstractTest;
-import ufo.primomiglio.common.json.JacksonJsonSerializerService;
 
 public class JJWT_JWTServiceImplTest extends BaseAbstractTest {
 
-    private JWTService jwtService = new JJWT_JWTServiceImpl("hello".getBytes(), new JacksonJsonSerializerService());
+    @Autowired
+    private JWTService jwtService;
 
     @Test
     public void should_generate_and_parse_custom_beans() {

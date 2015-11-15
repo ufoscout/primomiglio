@@ -13,19 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package ufo.primomiglio.common.config;
+package ufo.primomiglio.backend;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import io.vertx.core.Vertx;
+import ufo.primomiglio.backend.web.WebConfig;
+import ufo.primomiglio.common.CommonConfiguration;
+import ufo.primomiglio.common.context.Context;
 
-@Configuration
-public class VertxConfiguration {
+public class ApplicationConfig {
 
-    @Bean
-    public Vertx vertx() {
-        return Vertx.vertx();
+    private static Logger LOGGER = LoggerFactory.getLogger(ApplicationConfig.class);
+
+    public static void configureApplication(Context context) {
+        LOGGER.info("Configure Backend application");
+        context.addToContext(CommonConfiguration::configureCommon);
+        context.addToContext(WebConfig::configureWeb);
     }
 
 }

@@ -13,18 +13,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package ufo.primomiglio.common.context;
+package ufo.primomiglio.common.jwt;
 
-import java.util.function.Consumer;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
 
-public interface Context {
+@Configuration
+@ConfigurationProperties(prefix="jwt")
+public class JWTConfig {
 
-    <T> T getComponent(Class<T> componentClass);
+    private String secret;
 
-    <T> void addComponent(Class<T> componentClass);
+    public String getSecret() {
+        return secret;
+    }
 
-    <T> void addComponent(T componentInstance);
-
-    Context addToContext(Consumer<Context> consumer);
+    /**
+     * @param secret the secret to set
+     */
+    public void setSecret(String secret) {
+        this.secret = secret;
+    }
 
 }
