@@ -17,7 +17,7 @@ package ufo.primomiglio.common.util;
 
 public interface RuntimeUtils {
 
-    public static int numberOfCores() {
+    static int numberOfCores() {
         return Runtime.getRuntime().availableProcessors();
     }
 

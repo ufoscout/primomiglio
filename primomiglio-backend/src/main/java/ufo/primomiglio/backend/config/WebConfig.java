@@ -15,25 +15,24 @@
  ******************************************************************************/
 package ufo.primomiglio.backend.config;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import co.paralleluniverse.fibers.Suspendable;
 import io.vertx.core.DeploymentOptions;
 import io.vertx.core.Vertx;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import ufo.primomiglio.backend.web.WebServerVerticle;
-import ufo.primomiglio.common.config.Context;
+import ufo.primomiglio.common.context.Context;
 import ufo.primomiglio.common.util.RuntimeUtils;
 
-public interface WebConfig {
+public class WebConfig {
 
-    public static Logger LOGGER = LoggerFactory.getLogger(ApplicationConfig.class);
+    private static Logger LOGGER = LoggerFactory.getLogger(ApplicationConfig.class);
 
     @Suspendable
     public static void configureWeb(Context context) {
         LOGGER.info("Configure Backend Web application");
 
-        Vertx vertx = context.container().getComponent(Vertx.class);
+        Vertx vertx = context.getComponent(Vertx.class);
 
         int instances = RuntimeUtils.numberOfCores() / 4;
 

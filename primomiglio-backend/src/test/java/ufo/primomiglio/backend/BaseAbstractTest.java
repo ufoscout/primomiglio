@@ -15,8 +15,7 @@
  ******************************************************************************/
 package ufo.primomiglio.backend;
 
-import java.math.BigDecimal;
-
+import io.vertx.ext.unit.junit.VertxUnitRunner;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
@@ -24,9 +23,9 @@ import org.junit.rules.TestName;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import ufo.primomiglio.common.context.Context;
 
-import io.vertx.ext.unit.junit.VertxUnitRunner;
-import ufo.primomiglio.common.config.Context;
+import java.math.BigDecimal;
 
 /**
  *

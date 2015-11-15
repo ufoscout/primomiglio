@@ -15,14 +15,12 @@
  ******************************************************************************/
 package ufo.primomiglio.common.config;
 
-import io.vertx.core.Vertx;
 import ufo.primomiglio.common.context.Context;
 
-public interface VertxConfiguration {
+public interface CommonConfiguration {
 
-    static void configureVertx(Context context) {
-        Vertx vertx = Vertx.vertx();
-        context.addComponent(vertx);
+    static void configureCommon(Context context) {
+        context.addToContext(VertxConfiguration::configureVertx);
     }
 
 }

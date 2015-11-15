@@ -13,16 +13,32 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package ufo.primomiglio.common.config;
+package ufo.primomiglio;
+
+import org.junit.Test;
 
 import io.vertx.core.Vertx;
-import ufo.primomiglio.common.context.Context;
+import io.vertx.core.json.JsonObject;
+import io.vertx.ext.auth.AuthProvider;
+import io.vertx.ext.auth.jwt.JWTAuth;
+import ufo.primomiglio.backend.BaseAbstractTest;
 
-public interface VertxConfiguration {
+public class Cazztest extends BaseAbstractTest {
 
-    static void configureVertx(Context context) {
+    @Test
+    public void bho() {
         Vertx vertx = Vertx.vertx();
-        context.addComponent(vertx);
+
+        JsonObject config = new JsonObject()
+                .put("keyStore", new JsonObject()
+                .put("path", "keystore.jceks")
+                .put("type", "jceks")
+                .put("password", "secret"));
+
+        AuthProvider provider = JWTAuth.create(vertx, config);
+
+
+
     }
 
 }

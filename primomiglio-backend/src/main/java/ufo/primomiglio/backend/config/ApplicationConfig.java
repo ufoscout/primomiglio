@@ -18,11 +18,11 @@ package ufo.primomiglio.backend.config;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import ufo.primomiglio.common.config.Context;
+import ufo.primomiglio.common.context.Context;
 
 public class ApplicationConfig {
 
-    public static Logger LOGGER = LoggerFactory.getLogger(ApplicationConfig.class);
+    private static Logger LOGGER = LoggerFactory.getLogger(ApplicationConfig.class);
 
     public static void configureApplication(Context context) {
         LOGGER.info("Configure Backend application");

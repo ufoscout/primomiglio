@@ -13,16 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package ufo.primomiglio.common.config;
+package ufo.primomiglio.common.context;
 
-import io.vertx.core.Vertx;
-import ufo.primomiglio.common.context.Context;
+import java.util.function.Consumer;
 
-public interface VertxConfiguration {
+public interface Context {
 
-    static void configureVertx(Context context) {
-        Vertx vertx = Vertx.vertx();
-        context.addComponent(vertx);
-    }
+    <T> T getComponent(Class<T> componentClass);
+
+    <T> void addComponent(Class<T> componentClass);
+
+    <T> void addComponent(T componentInstance);
+
+    Context addToContext(Consumer<Context> consumer);
 
 }

@@ -13,24 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package ufo.primomiglio.common.config;
+package ufo.primomiglio.common.jwt;
 
-import static org.junit.Assert.assertNotNull;
+public interface JWTService {
 
-import org.junit.Test;
+    <T> String generate(T payload);
 
-import io.vertx.core.Vertx;
-import ufo.primomiglio.common.BaseAbstractTest;
+    String parse(String jsonString);
 
-public class ContextTest extends BaseAbstractTest {
+    <T> T parse(String jsonString, Class<T> payloadClass);
 
-    @Test
-    public void context_should_not_be_null() {
-        assertNotNull(Context.newContext());
-    }
-
-    @Test
-    public void context_should_contain_vertx() throws InterruptedException {
-        assertNotNull(Context.newContext().container().getComponent(Vertx.class));
-    }
 }
