@@ -49,11 +49,4 @@ public interface JsonSerializerService {
 
 	<T> T fromJson(String json, Class<T> clazz, Class<?>... genericsArgs);
 
-	/**
-	 * Returns the json schema based on a bean structure
-	 * @param object
-	 * @return
-	 */
-	String toJsonSchema(Object object);
-
 }

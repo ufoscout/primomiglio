@@ -14,7 +14,7 @@
 
 	<properties>
 		<docker.image.prefix>primomiglio</docker.image.prefix>
-		<exec.mainClass>ufo.primomiglio.backend.Application</exec.mainClass>
+		<start-class>ufo.primomiglio.Application</start-class>
 	</properties>
 
 	<dependencies>
@@ -34,14 +34,6 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<configuration>
-					<requiresUnpack>
-						<dependency>
-							<groupId>ufo.primomiglio</groupId>
-							<artifactId>primomiglio-frontend</artifactId>
-						</dependency>
-					</requiresUnpack>
-				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>com.spotify</groupId>

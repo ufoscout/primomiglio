@@ -20,9 +20,9 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import ufo.primomiglio.common.BaseAbstractTest;
+import ufo.primomiglio.common.BaseIT;
 
-public class JWTConfigTest extends BaseAbstractTest {
+public class JWTConfigTest extends BaseIT {
 
     @Autowired
     private JWTConfig config;

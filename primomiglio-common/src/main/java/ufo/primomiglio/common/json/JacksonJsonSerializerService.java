@@ -25,7 +25,6 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import com.fasterxml.jackson.databind.jsonschema.JsonSchema;
 
 
 /**
@@ -84,24 +83,13 @@ public class JacksonJsonSerializerService implements JsonSerializerService {
 	public <T> T fromJson(final String json, final Class<T> clazz, final Class<?>... genericsArgs) {
 		try {
 			if (genericsArgs.length > 0) {
-				JavaType type = mapper.getTypeFactory().constructParametricType(clazz, genericsArgs);
+				JavaType type = mapper.getTypeFactory().constructParametrizedType(clazz, clazz, genericsArgs);
 				return mapper.readValue(json.toString(), type);
 			}
 			return mapper.readValue(json.toString(), clazz);
 		} catch (final Exception e) {
 			throw new RuntimeException(e);
 		}
-	}
-
-	@Override
-	public String toJsonSchema(final Object object) {
-		try {
-			final JsonSchema schema = mapper.generateJsonSchema(object.getClass());
-			return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(schema);
-		} catch (final Exception e) {
-			throw new RuntimeException(e);
-		}
-
 	}
 
 }

@@ -29,9 +29,9 @@ import javax.annotation.Resource;
 
 import org.junit.Test;
 
-import ufo.primomiglio.common.BaseAbstractTest;
+import ufo.primomiglio.common.BaseIT;
 
-public class JacksonJsonSerializerServiceTest extends BaseAbstractTest {
+public class JacksonJsonSerializerServiceTest extends BaseIT {
 
     @Resource
     private JsonSerializerService jsonSerializerService;

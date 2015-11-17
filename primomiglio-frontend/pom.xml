@@ -4,8 +4,8 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-	<groupId>ufo.primomiglio</groupId>
-	<artifactId>primomiglio</artifactId>
+		<groupId>ufo.primomiglio</groupId>
+		<artifactId>primomiglio</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
@@ -16,18 +16,14 @@
 		<resources>
 			<resource>
 				<directory>webapp/dist</directory>
-				<targetPath>webroot</targetPath>
+				<targetPath>META-INF/resources</targetPath>
 			</resource>
-<!--			<resource>
-				<directory>webapp/bower_components/bootstrap/fonts</directory>
-				<targetPath>webroot/fonts</targetPath>
-			</resource> -->
 		</resources>
 		<plugins>
 			<plugin>
 				<groupId>com.github.eirslett</groupId>
 				<artifactId>frontend-maven-plugin</artifactId>
-								<configuration>
+				<configuration>
 					<workingDirectory>webapp</workingDirectory>
 				</configuration>
 				<executions>
@@ -37,7 +33,7 @@
 							<goal>install-node-and-npm</goal>
 						</goals>
 						<configuration>
-							<nodeVersion>v4.0.0</nodeVersion>
+							<nodeVersion>v4.2.2</nodeVersion>
 							<npmVersion>3.3.3</npmVersion>
 						</configuration>
 					</execution>
@@ -81,7 +77,7 @@
 							<arguments>test</arguments>
 						</configuration>
 					</execution>
- 
+
 				</executions>
 			</plugin>
 		</plugins>
