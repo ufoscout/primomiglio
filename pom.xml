@@ -20,6 +20,7 @@
 
 		<hikaricp.version>2.4.1</hikaricp.version>
 		<jjwt.version>0.6.0</jjwt.version>
+		<reactor.version>2.0.7.RELEASE</reactor.version>
 	</properties>
 
 	<modules>
@@ -60,6 +61,16 @@
 				<groupId>io.jsonwebtoken</groupId>
 				<artifactId>jjwt</artifactId>
 				<version>${jjwt.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.projectreactor</groupId>
+				<artifactId>reactor-bus</artifactId>
+				<version>${reactor.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.projectreactor</groupId>
+				<artifactId>reactor-stream</artifactId>
+				<version>${reactor.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>

@@ -26,8 +26,11 @@
     $(document).ready(function () {
         $('#generateToken').on('click', function () {
             $.ajax({
-                url: '/api/newToken',
-                dataType: 'text',
+                url: '/rest/login',
+                type: "POST",
+                data: JSON.stringify({username: "ufoscout", password: "password"}),
+                contentType: "application/json; charset=utf-8",
+                //dataType: "json",
                 success: function (text) {
                     $('#token').html('Current Token: ' + text);
                 }

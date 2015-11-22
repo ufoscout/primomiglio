@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2013 Francesco Cina'
+ * Copyright 2015 Francesco Cina'
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,32 +13,36 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package ufo.primomiglio.backend;
+package ufo.primomiglio.backend.security.client;
 
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.SpringApplicationConfiguration;
-import org.springframework.context.ApplicationContext;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.stereotype.Service;
 
-import ufo.primomiglio.Application;
+import reactor.rx.Promise;
+import reactor.rx.Stream;
+import ufo.primomiglio.backend.security.repository.RolesDao;
 
-/**
- *
- * @author Francesco Cina
- *
- *         20/mag/2011
- */
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = Application.class)
-public abstract class BaseIT extends BaseUnitTest {
+@Service
+public class SecurityApiImpl implements SecurityApi {
+
+    private final RolesDao rolesDao;
 
     @Autowired
-    protected ApplicationContext context;
-
-    protected ApplicationContext getContext() {
-        return context;
+    public SecurityApiImpl(RolesDao rolesDao) {
+        this.rolesDao = rolesDao;
     }
 
+    @Override
+    public Stream<String> getRolesByUserId(Long id) {
+        return rolesDao.getRoles();
+    }
+
+    @Override
+    public Promise<UserContext> getUserContextByUserId(Long id) {
+        return getRolesByUserId(id)
+        .buffer()
+        .next()
+        .map(roles -> new UserContext(id, roles));
+    }
 
 }

@@ -13,18 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package ufo.primomiglio.backend.web.rest;
+package ufo.primomiglio.backend.web.login;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+public class LoginDTO {
 
-@RestController
-@RequestMapping("/rest")
-public class HelloController {
-
-    @RequestMapping("/hello")
-    public String hello() {
-        return "HELLO!!!!";
-    }
+    public String username;
+    public String password;
 
 }

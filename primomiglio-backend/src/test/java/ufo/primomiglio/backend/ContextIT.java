@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2013 Francesco Cina'
+ * Copyright 2015 Francesco Cina'
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,30 +15,15 @@
  ******************************************************************************/
 package ufo.primomiglio.backend;
 
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.SpringApplicationConfiguration;
-import org.springframework.context.ApplicationContext;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import static org.junit.Assert.*;
 
-import ufo.primomiglio.Application;
+import org.junit.Test;
 
-/**
- *
- * @author Francesco Cina
- *
- *         20/mag/2011
- */
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = Application.class)
-public abstract class BaseIT extends BaseUnitTest {
+public class ContextIT extends BaseIT {
 
-    @Autowired
-    protected ApplicationContext context;
-
-    protected ApplicationContext getContext() {
-        return context;
+    @Test
+    public void context_should_start() {
+        assertNotNull(context);
     }
-
 
 }
