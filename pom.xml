@@ -25,7 +25,9 @@
 
 	<modules>
 		<module>primomiglio-common</module>
-		<module>primomiglio-backend</module>
+		<module>primomiglio-auth</module>
+		<module>primomiglio-um</module>
+		<module>primomiglio-webapp</module>
 		<module>primomiglio-frontend</module>
 		<module>primomiglio-build</module>
 	</modules>
@@ -39,9 +41,19 @@
 			</dependency>
 			<dependency>
 				<groupId>ufo.primomiglio</groupId>
-				<artifactId>primomiglio-backend</artifactId>
+				<artifactId>primomiglio-auth</artifactId>
 				<version>${project.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>ufo.primomiglio</groupId>
+				<artifactId>primomiglio-um</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>ufo.primomiglio</groupId>
+				<artifactId>primomiglio-webapp</artifactId>
+				<version>${project.version}</version>
+			</dependency>			
 			<dependency>
 				<groupId>ufo.primomiglio</groupId>
 				<artifactId>primomiglio-frontend</artifactId>
