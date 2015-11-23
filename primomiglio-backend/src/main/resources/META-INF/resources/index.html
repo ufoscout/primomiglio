@@ -22,6 +22,11 @@
     <div id="protected"></div>
 </div>
 
+<div id="forbidden">
+    <a href="#" id="getUnauthorized">Get unauthorized Resource</a>
+    <div id="unauthorized"></div>
+</div>
+
 <script language="JavaScript">
     $(document).ready(function () {
         $('#generateToken').on('click', function () {
@@ -38,16 +43,28 @@
         });
         $('#getProtected').on('click', function () {
             $.ajax({
-                url: '/api/protected',
+                url: '/rest/protected',
                 dataType: 'text',
                 headers: {
-                    "Authorization": "Bearer " + $('#token').html().substring(15)
+                    "Authorization": $('#token').html().substring(15)
                 },
                 success: function (text) {
                     $('#protected').html(text);
                 },
                 error: function (err) {
                     $('#protected').html('Error: ' + err.toString());
+                }
+            });
+        });
+        $('#getUnauthorized').on('click', function () {
+            $.ajax({
+                url: '/rest/forbidden',
+                dataType: 'text',
+                success: function (text) {
+                    $('#unauthorized').html(text);
+                },
+                error: function (err) {
+                    alert(err);
                 }
             });
         });

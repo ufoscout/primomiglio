@@ -15,6 +15,7 @@
  ******************************************************************************/
 package ufo.primomiglio.backend.security.client;
 
+import java.util.Collections;
 import java.util.List;
 
 public class UserContext {
@@ -23,7 +24,7 @@ public class UserContext {
     private List<String> permissions;
 
     public UserContext() {
-
+        this(-1l, Collections.EMPTY_LIST);
     }
 
     public UserContext(Long userId, List<String> permissions) {
