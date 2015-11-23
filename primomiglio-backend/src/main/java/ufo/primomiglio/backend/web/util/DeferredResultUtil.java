@@ -19,13 +19,29 @@ import org.springframework.web.context.request.async.DeferredResult;
 
 import reactor.rx.Promise;
 
-public class DeferredResultUtil {
+public interface DeferredResultUtil {
 
-    public static <T> DeferredResult<T> toDeferredResult(Promise<T> promise) {
+    /**
+     * Maps a {@link Promise} to a {@link DeferredResult}
+     * @param promise
+     * @return
+     */
+    static <T> DeferredResult<T> fromPromise(Promise<T> promise) {
         DeferredResult<T> result = new DeferredResult<>();
         promise.onSuccess(t -> result.setResult(t))
         .onError(ex -> result.setErrorResult(ex));
         return result;
+    }
+
+    /**
+     * Builds a successfully completed {@link DeferredResult}
+     * @param result
+     * @return
+     */
+    static <T> DeferredResult<T> successful(T result) {
+        DeferredResult<T> deferredResult = new DeferredResult<>();
+        deferredResult.setResult(result);
+        return deferredResult;
     }
 
 }

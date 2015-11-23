@@ -33,7 +33,7 @@ public class DeferredResultUtilTest extends BaseUnitTest {
     public void deferred_should_be_resolved_on_successful_promise() {
 
         Promise<String> promise = Promises.success("hello");
-        DeferredResult<String> deferredResult = DeferredResultUtil.toDeferredResult(promise);
+        DeferredResult<String> deferredResult = DeferredResultUtil.fromPromise(promise);
         assertNotNull(deferredResult);
 
         AtomicReference<Object> reference = new AtomicReference<>();
@@ -54,7 +54,7 @@ public class DeferredResultUtilTest extends BaseUnitTest {
 
         Throwable exception = new RuntimeException("Hello from exception");
         Promise<String> promise = Promises.error(exception);
-        DeferredResult<String> deferredResult = DeferredResultUtil.toDeferredResult(promise);
+        DeferredResult<String> deferredResult = DeferredResultUtil.fromPromise(promise);
         assertNotNull(deferredResult);
 
         AtomicReference<Object> reference = new AtomicReference<>();

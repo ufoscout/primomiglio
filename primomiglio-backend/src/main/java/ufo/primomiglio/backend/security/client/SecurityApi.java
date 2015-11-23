@@ -21,6 +21,56 @@ import reactor.rx.Stream;
 public interface SecurityApi {
 
     /**
+     * Throws {@link UnauthorizedException} if the {@link UserContext} does not have the
+     * required permission
+     * @param userContext
+     * @param permissionName
+     * @return the {@link UserContext}
+     */
+    static UserContext neededPermisison(UserContext userContext, String permissionName) {
+        return neededAnyPermisison(userContext, permissionName);
+    }
+
+    /**
+     * Throws {@link UnauthorizedException} if the {@link UserContext} does not have at least
+     * one of the required permissions
+     * @param userContext
+     * @param permissionName
+     * @return the {@link UserContext}
+     */
+    static UserContext neededAnyPermisison(UserContext userContext, String... permissionsName) {
+        if (!hasAnyPermission(userContext, permissionsName)) {
+            throw new UnauthorizedException();
+        }
+        return userContext;
+    }
+
+    /**
+     * Returns whether the {@link UserContext} has the required permission
+     * @param userContext
+     * @param permissionName
+     * @return
+     */
+    static boolean hasPermission(UserContext userContext, String permissionName) {
+        return hasAnyPermission(userContext, permissionName);
+    }
+
+    /**
+     * Returns whether the {@link UserContext} has at least one of the required permissions
+     * @param userContext
+     * @param permissionsName
+     * @return
+     */
+    static boolean hasAnyPermission(UserContext userContext, String... permissionsName) {
+        for (String permissionName : permissionsName) {
+            if (userContext.getPermissions().contains(permissionName)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
      * Return the roles of a user by id
      * @param id
      * @return
