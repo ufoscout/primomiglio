@@ -13,36 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package ufo.primomiglio.auth.client;
+package ufo.primomiglio.auth.client.domain;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import reactor.rx.Promise;
 import reactor.rx.Stream;
-import ufo.primomiglio.auth.repository.RolesDao;
 
-@Service
-public class SecurityApiImpl implements SecurityApi {
+public interface AuthService {
 
-    private final RolesDao rolesDao;
-
-    @Autowired
-    public SecurityApiImpl(RolesDao rolesDao) {
-        this.rolesDao = rolesDao;
-    }
-
-    @Override
-    public Stream<String> getRolesByUserId(Long id) {
-        return rolesDao.getRoles();
-    }
-
-    @Override
-    public Promise<UserContext> getUserContextByUserId(Long id) {
-        return getRolesByUserId(id)
-        .buffer()
-        .next()
-        .map(roles -> new UserContext(id, roles));
-    }
+    /**
+     * Returns all the permissions of a role and of all related roles
+     * @param roleName
+     * @return
+     */
+    Stream<String> getPermissionsByRoleRecursively(String roleName);
 
 }

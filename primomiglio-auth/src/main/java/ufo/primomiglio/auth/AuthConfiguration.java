@@ -13,32 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package ufo.primomiglio.auth.repository;
+package ufo.primomiglio.auth;
 
-import reactor.rx.Stream;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 
-public interface RolesDao {
+import ufo.primomiglio.common.CommonConfiguration;
 
-    /**
-     * Returns all the permissions of a role
-     * @param roleName
-     * @return
-     */
-    Stream<String> getPermissionsByRole(String roleName);
-
-    /**
-     * Returns all the permissions of a role and of all the related roles
-     * @param roleName
-     * @return
-     */
-    Stream<String> getPermissionsByRoleRecursively(String roleName);
-
-    /**
-     * returns the transitive list of roles related to a role
-     * @param roleName
-     * @return
-     */
-    Stream<String> getRelatedRoles(String roleName);
-
+@Configuration
+@EnableAutoConfiguration
+@Import({CommonConfiguration.class})
+public class AuthConfiguration {
 
 }

@@ -18,7 +18,7 @@ package ufo.primomiglio.auth.client;
 import reactor.rx.Promise;
 import reactor.rx.Stream;
 
-public interface SecurityApi {
+public interface AuthApi {
 
     /**
      * Throws {@link UnauthorizedException} if the {@link UserContext} does not have the

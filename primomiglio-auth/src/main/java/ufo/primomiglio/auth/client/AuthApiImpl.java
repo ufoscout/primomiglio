@@ -13,32 +13,36 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package ufo.primomiglio.auth.repository;
+package ufo.primomiglio.auth.client;
 
-import static org.junit.Assert.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-
-import org.junit.Test;
-
-import reactor.core.dispatch.ThreadPoolExecutorDispatcher;
+import reactor.rx.Promise;
 import reactor.rx.Stream;
-import ufo.primomiglio.auth.BaseUnitTest;
-import ufo.primomiglio.auth.repository.JdbcRolesDao;
 import ufo.primomiglio.auth.repository.RolesDao;
 
-public class JdbcRolesDaoTest extends BaseUnitTest {
+@Service
+public class AuthApiImpl implements AuthApi {
 
-    private RolesDao rolesDao = new JdbcRolesDao(new ThreadPoolExecutorDispatcher(10,10));
+    private final RolesDao rolesDao;
 
-    @Test
-    public void should_return_list_of_roles() throws InterruptedException {
-        Stream<List<String>> roleStream = rolesDao.getRoles().buffer();
-        assertNotNull(roleStream);
-        List<String> queue = roleStream.toBlockingQueue().poll(1, TimeUnit.SECONDS);
-        assertTrue(queue.contains("ADMIN"));
-        assertEquals(3, queue.size());
+    @Autowired
+    public AuthApiImpl(RolesDao rolesDao) {
+        this.rolesDao = rolesDao;
+    }
+
+    @Override
+    public Stream<String> getRolesByUserId(Long id) {
+        return null;
+    }
+
+    @Override
+    public Promise<UserContext> getUserContextByUserId(Long id) {
+        return getRolesByUserId(id)
+        .buffer()
+        .next()
+        .map(roles -> new UserContext(id, roles));
     }
 
 }

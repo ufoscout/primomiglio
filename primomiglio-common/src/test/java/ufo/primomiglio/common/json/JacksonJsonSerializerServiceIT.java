@@ -31,7 +31,7 @@ import org.junit.Test;
 
 import ufo.primomiglio.common.BaseIT;
 
-public class JacksonJsonSerializerServiceTest extends BaseIT {
+public class JacksonJsonSerializerServiceIT extends BaseIT {
 
     @Resource
     private JsonSerializerService jsonSerializerService;

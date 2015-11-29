@@ -26,7 +26,7 @@ import org.springframework.web.context.request.async.DeferredResult;
 
 import reactor.rx.Promise;
 import reactor.rx.Promises;
-import ufo.primomiglio.auth.client.SecurityApi;
+import ufo.primomiglio.auth.client.AuthApi;
 import ufo.primomiglio.auth.client.UserContext;
 import ufo.primomiglio.common.jwt.JWTService;
 import ufo.primomiglio.um.client.UserManagementApi;
@@ -38,12 +38,12 @@ import ufo.primomiglio.webapp.util.DeferredResultUtil;
 public class LoginController {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
-    private final SecurityApi securityApi;
+    private final AuthApi securityApi;
     private final UserManagementApi umApi;
     private final JWTService jwtService;
 
     @Autowired
-    public LoginController(UserManagementApi umApi, SecurityApi securityApi, JWTService jwtService) {
+    public LoginController(UserManagementApi umApi, AuthApi securityApi, JWTService jwtService) {
         this.umApi = umApi;
         this.securityApi = securityApi;
         this.jwtService = jwtService;
@@ -63,7 +63,7 @@ public class LoginController {
         logger.warn("UserContext has roles [{}]", userContext.getPermissions());
 
         Promise<String> promise = Promises
-        .syncTask(() -> SecurityApi.neededPermisison(userContext, "ADMIN"))
+        .syncTask(() -> AuthApi.neededPermisison(userContext, "ADMIN"))
         .map(context -> context.getPermissions().toString());
 
         return DeferredResultUtil.fromPromise(promise);
@@ -73,7 +73,7 @@ public class LoginController {
     public DeferredResult<String> forbidden(UserContext userContext) {
 
         Promise<String> promise = Promises
-        .syncTask(() -> SecurityApi.neededPermisison(userContext, "GOD!!!"))
+        .syncTask(() -> AuthApi.neededPermisison(userContext, "GOD!!!"))
         .map(context -> "Are you a God?!!");
 
         return DeferredResultUtil.fromPromise(promise);

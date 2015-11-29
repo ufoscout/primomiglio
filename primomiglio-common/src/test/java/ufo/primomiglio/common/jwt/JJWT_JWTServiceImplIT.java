@@ -28,7 +28,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import io.jsonwebtoken.SignatureException;
 import ufo.primomiglio.common.BaseIT;
 
-public class JJWT_JWTServiceImplTest extends BaseIT {
+public class JJWT_JWTServiceImplIT extends BaseIT {
 
     @Autowired
     private JWTService jwtService;

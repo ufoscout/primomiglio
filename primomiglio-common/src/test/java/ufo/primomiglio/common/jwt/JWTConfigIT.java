@@ -13,32 +13,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package ufo.primomiglio.auth.repository;
+package ufo.primomiglio.common.jwt;
 
-import reactor.rx.Stream;
+import static org.junit.Assert.*;
 
-public interface RolesDao {
+import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
-    /**
-     * Returns all the permissions of a role
-     * @param roleName
-     * @return
-     */
-    Stream<String> getPermissionsByRole(String roleName);
+import ufo.primomiglio.common.BaseIT;
 
-    /**
-     * Returns all the permissions of a role and of all the related roles
-     * @param roleName
-     * @return
-     */
-    Stream<String> getPermissionsByRoleRecursively(String roleName);
+public class JWTConfigIT extends BaseIT {
 
-    /**
-     * returns the transitive list of roles related to a role
-     * @param roleName
-     * @return
-     */
-    Stream<String> getRelatedRoles(String roleName);
+    @Autowired
+    private JWTConfig config;
 
+    @Test
+    public void config_should_not_be_null() {
+        assertNotNull(config);
+    }
+
+    @Test
+    public void secret_should_not_be_null() {
+        assertNotNull(config.getSecret());
+    }
 
 }

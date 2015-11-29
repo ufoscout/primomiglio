@@ -15,30 +15,15 @@
  ******************************************************************************/
 package ufo.primomiglio.auth.repository;
 
-import reactor.rx.Stream;
+public interface Permissions {
 
-public interface RolesDao {
+    String USER_PROFILE_OWN_READ = "USER_PROFILE_OWN_READ";
+    String USER_PROFILE_OWN_EDIT = "USER_PROFILE_OWN_EDIT";
 
-    /**
-     * Returns all the permissions of a role
-     * @param roleName
-     * @return
-     */
-    Stream<String> getPermissionsByRole(String roleName);
+    String USER_PROFILE_OTHERS_READ = "USER_PROFILE_OTHERS_READ";
+    String USER_PROFILE_OTHERS_EDIT = "USER_PROFILE_OTHERS_EDIT";
 
-    /**
-     * Returns all the permissions of a role and of all the related roles
-     * @param roleName
-     * @return
-     */
-    Stream<String> getPermissionsByRoleRecursively(String roleName);
-
-    /**
-     * returns the transitive list of roles related to a role
-     * @param roleName
-     * @return
-     */
-    Stream<String> getRelatedRoles(String roleName);
-
+    String APPLICATION_CONFIGURATION_READ = "APPLICATION_CONFIGURATION_READ";
+    String APPLICATION_CONFIGURATION_EDIT = "APPLICATION_CONFIGURATION_EDIT";
 
 }

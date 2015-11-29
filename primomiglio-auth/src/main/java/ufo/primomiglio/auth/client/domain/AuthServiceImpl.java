@@ -13,36 +13,27 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package ufo.primomiglio.auth.repository;
+package ufo.primomiglio.auth.client.domain;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
-import reactor.core.Dispatcher;
-import reactor.core.reactivestreams.SubscriberWithContext;
 import reactor.rx.Stream;
-import reactor.rx.Streams;
+import ufo.primomiglio.auth.repository.RolesDao;
 
-@Repository
-public class JdbcRolesDao implements RolesDao {
+@Service
+public class AuthServiceImpl implements AuthService {
 
-    private final Dispatcher dispatcher;
+    private final RolesDao rolesDao;
 
     @Autowired
-    public JdbcRolesDao(Dispatcher dispatcher) {
-        this.dispatcher = dispatcher;
+    public AuthServiceImpl(RolesDao rolesDao) {
+        this.rolesDao = rolesDao;
     }
 
     @Override
-    public Stream<String> getRoles() {
-        return Streams.createWith((Long demand, SubscriberWithContext<String, Void> sub) -> {
-            System.out.println("Demand: " + demand + ". Thread: " + Thread.currentThread().getName());
-            sub.onNext("ADMIN");
-            sub.onNext("USER");
-            sub.onNext("OTHER");
-            sub.onComplete();
-        }).subscribeOn(dispatcher);
-
+    public Stream<String> getPermissionsByRoleRecursively(String roleName) {
+        return rolesDao.getPermissionsByRoleRecursively(roleName);
     }
 
 }

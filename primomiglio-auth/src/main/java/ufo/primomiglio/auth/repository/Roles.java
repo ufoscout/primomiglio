@@ -13,28 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package ufo.primomiglio.common.jwt;
+package ufo.primomiglio.auth.repository;
 
-import static org.junit.Assert.*;
+public interface Roles {
 
-import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
+    /**
+     * technical administrator of the application
+     */
+    String APPLICATION_ADMIN = "APPLICATION_ADMIN";
 
-import ufo.primomiglio.common.BaseIT;
+    /**
+     * business administrator
+     */
+    String ADMIN = "ADMIN";
 
-public class JWTConfigTest extends BaseIT {
-
-    @Autowired
-    private JWTConfig config;
-
-    @Test
-    public void config_should_not_be_null() {
-        assertNotNull(config);
-    }
-
-    @Test
-    public void secret_should_not_be_null() {
-        assertNotNull(config.getSecret());
-    }
+    String USER = "USER";
 
 }
