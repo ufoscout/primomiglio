@@ -26,6 +26,7 @@ import org.junit.Test;
 
 import reactor.rx.Promise;
 import ufo.primomiglio.auth.BaseUnitTest;
+import ufo.primomiglio.auth.repository.impl.InMemoryRolesDao;
 
 public class InMemoryRolesDaoTest extends BaseUnitTest {
 

@@ -13,31 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package ufo.primomiglio.auth.database;
+package ufo.primomiglio.auth.repository;
 
-import java.sql.SQLException;
+import java.util.List;
 
-import javax.sql.DataSource;
+import com.jporm.rm.session.Session;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import ufo.primomiglio.common.jdbc.WriteDao;
 
-import liquibase.integration.spring.SpringLiquibase;
+public interface UserRoleDao extends WriteDao<UserRole> {
 
-@Configuration
-public class AuthDatabaseConfig {
-
-	/**
-	 * Creates or updates the database for the auth module
-	 * @return
-	 * @throws SQLException
-	 */
-	@Bean
-	public SpringLiquibase authLiquibase(DataSource dataSource) throws SQLException {
-		SpringLiquibase liquibase = new SpringLiquibase();
-		liquibase.setDataSource(dataSource);
-		liquibase.setChangeLog("classpath:auth/db/changelog/db.changelog-master.xml");
-		return liquibase;
-	}
+    List<String> getRolesByUserId(final Session session, Long userId);
 
 }

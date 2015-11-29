@@ -17,10 +17,11 @@ package ufo.primomiglio.auth;
 
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.ConfigFileApplicationContextInitializer;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import com.jporm.rm.JpoRm;
 
 import ufo.primomiglio.Application;
 
@@ -36,6 +37,8 @@ public abstract class BaseIT extends BaseUnitTest {
 
     @Autowired
     protected ApplicationContext context;
+    @Autowired
+    protected JpoRm jpo;
 
     protected ApplicationContext getContext() {
         return context;

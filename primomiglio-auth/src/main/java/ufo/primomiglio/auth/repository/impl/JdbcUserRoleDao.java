@@ -13,31 +13,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package ufo.primomiglio.auth.database;
+package ufo.primomiglio.auth.repository.impl;
 
-import java.sql.SQLException;
+import java.util.List;
 
-import javax.sql.DataSource;
+import org.springframework.stereotype.Repository;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import com.jporm.rm.session.Session;
+import com.jporm.types.io.ResultSetRowReader;
 
-import liquibase.integration.spring.SpringLiquibase;
+import ufo.primomiglio.auth.repository.UserRole;
+import ufo.primomiglio.auth.repository.UserRoleDao;
 
-@Configuration
-public class AuthDatabaseConfig {
+@Repository
+public class JdbcUserRoleDao implements UserRoleDao {
 
-	/**
-	 * Creates or updates the database for the auth module
-	 * @return
-	 * @throws SQLException
-	 */
-	@Bean
-	public SpringLiquibase authLiquibase(DataSource dataSource) throws SQLException {
-		SpringLiquibase liquibase = new SpringLiquibase();
-		liquibase.setDataSource(dataSource);
-		liquibase.setChangeLog("classpath:auth/db/changelog/db.changelog-master.xml");
-		return liquibase;
-	}
+    @Override
+    public List<String> getRolesByUserId(final Session session, Long userId) {
+        return session.find("ur.roleName").from(UserRole.class, "ur").where().eq("ur.userId", userId)
+                .fetch((ResultSetRowReader<String>) (rs, rowNum) -> rs.getString("ur.roleName"));
+
+    }
 
 }

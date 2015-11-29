@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package ufo.primomiglio.auth.repository;
+package ufo.primomiglio.auth.repository.impl;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -25,6 +25,9 @@ import org.springframework.stereotype.Repository;
 
 import reactor.rx.Stream;
 import reactor.rx.Streams;
+import ufo.primomiglio.auth.repository.Permissions;
+import ufo.primomiglio.auth.repository.Roles;
+import ufo.primomiglio.auth.repository.RolesDao;
 
 @Repository
 public class InMemoryRolesDao implements RolesDao {
