@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package ufo.primomiglio.webapp.login;
+package ufo.primomiglio.backend.login;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,10 +28,10 @@ import reactor.rx.Promise;
 import reactor.rx.Promises;
 import ufo.primomiglio.auth.client.AuthApi;
 import ufo.primomiglio.auth.client.UserContext;
+import ufo.primomiglio.backend.RestConstants;
+import ufo.primomiglio.backend.util.DeferredResultUtil;
 import ufo.primomiglio.common.jwt.JWTService;
 import ufo.primomiglio.um.client.UserManagementApi;
-import ufo.primomiglio.webapp.RestConstants;
-import ufo.primomiglio.webapp.util.DeferredResultUtil;
 
 @RestController
 @RequestMapping(RestConstants.REST_BASE_URL)

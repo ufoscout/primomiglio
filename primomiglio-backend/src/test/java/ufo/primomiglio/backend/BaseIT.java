@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2015 Francesco Cina'
+ * Copyright 2013 Francesco Cina'
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,28 +13,32 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package ufo.primomiglio.webapp;
+package ufo.primomiglio.backend;
 
-import java.util.List;
-
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.web.method.support.HandlerMethodArgumentResolver;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.context.ApplicationContext;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import ufo.primomiglio.webapp.security.UserContextResolver;
+import ufo.primomiglio.Application;
 
-@Configuration
-@ComponentScan
-public class WebConfig extends WebMvcConfigurerAdapter {
+/**
+ *
+ * @author Francesco Cina
+ *
+ *         20/mag/2011
+ */
+@RunWith(SpringJUnit4ClassRunner.class)
+@SpringApplicationConfiguration(classes = Application.class)
+public abstract class BaseIT extends BaseUnitTest {
 
     @Autowired
-    private UserContextResolver userContextResolver;
+    protected ApplicationContext context;
 
-    @Override
-    public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
-        argumentResolvers.add(userContextResolver);
+    protected ApplicationContext getContext() {
+        return context;
     }
+
 
 }

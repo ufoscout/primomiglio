@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package ufo.primomiglio.webapp.web.util;
+package ufo.primomiglio.backend.web.util;
 
 import static org.junit.Assert.*;
 
@@ -25,8 +25,8 @@ import org.springframework.web.context.request.async.DeferredResult.DeferredResu
 
 import reactor.rx.Promise;
 import reactor.rx.Promises;
-import ufo.primomiglio.webapp.BaseUnitTest;
-import ufo.primomiglio.webapp.util.DeferredResultUtil;
+import ufo.primomiglio.backend.BaseUnitTest;
+import ufo.primomiglio.backend.util.DeferredResultUtil;
 
 public class DeferredResultUtilTest extends BaseUnitTest {
 

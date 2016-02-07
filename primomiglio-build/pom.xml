@@ -20,7 +20,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>ufo.primomiglio</groupId>
-			<artifactId>primomiglio-webapp</artifactId>
+			<artifactId>primomiglio-backend</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>ufo.primomiglio</groupId>

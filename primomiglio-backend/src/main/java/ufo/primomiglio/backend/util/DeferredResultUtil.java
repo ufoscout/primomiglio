@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package ufo.primomiglio.webapp.util;
+package ufo.primomiglio.backend.util;
 
 import org.springframework.web.context.request.async.DeferredResult;
 

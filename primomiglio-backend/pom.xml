@@ -9,7 +9,7 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>primomiglio-webapp</artifactId>
+	<artifactId>primomiglio-backend</artifactId>
 	<packaging>jar</packaging>
 
 	<properties>

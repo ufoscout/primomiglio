@@ -13,20 +13,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package ufo.primomiglio.webapp.login;
+package ufo.primomiglio.backend;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import javax.servlet.http.HttpServletRequest;
 
-import ufo.primomiglio.webapp.RestConstants;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 
-@RestController
-@RequestMapping(RestConstants.REST_BASE_URL)
-public class HelloController {
+import ufo.primomiglio.auth.client.UnauthorizedException;
 
-    @RequestMapping("/hello")
-    public String hello() {
-        return "HELLO!!!!";
+@ControllerAdvice
+public class ExceptionHandlerConfiguration {
+
+    @ExceptionHandler(UnauthorizedException.class)
+    public ResponseEntity<?> rulesForCustomerNotFound(HttpServletRequest req, Exception e) {
+        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+
     }
 
 }

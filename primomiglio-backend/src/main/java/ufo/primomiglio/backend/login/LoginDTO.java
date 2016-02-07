@@ -13,10 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package ufo.primomiglio.webapp;
+package ufo.primomiglio.backend.login;
 
-public interface RestConstants {
+public class LoginDTO {
 
-    String REST_BASE_URL = "rest";
+    public String username;
+    public String password;
 
 }

@@ -1,4 +1,4 @@
-package ufo.primomiglio.webapp.security;
+package ufo.primomiglio.backend.security;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

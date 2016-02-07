@@ -1,4 +1,4 @@
-package ufo.primomiglio.webapp.security;
+package ufo.primomiglio.backend.security;
 
 import java.io.IOException;
 
